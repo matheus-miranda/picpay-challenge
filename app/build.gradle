@@ -7,11 +7,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    namespace "com.picpay.desafio.android"
+    compileSdk 34
+
     defaultConfig {
         applicationId "com.picpay.desafio.android"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
