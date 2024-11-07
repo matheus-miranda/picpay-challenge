@@ -2,14 +2,14 @@ package com.picpay.desafio.android.di
 
 import com.picpay.desafio.android.contacts.domain.model.User
 import com.picpay.desafio.android.contacts.domain.repository.UserRepository
-import com.picpay.desafio.android.contacts.presentation.contactlist.UserListViewModel
+import com.picpay.desafio.android.contacts.presentation.contactlist.ContactListViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val testModule = module {
-    viewModel { UserListViewModel(FakeRepository()) }
+    viewModel { ContactListViewModel(FakeRepository()) }
 }
 
 class FakeRepository : UserRepository {

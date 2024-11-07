@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.contacts.presentation.contactlist
+package com.picpay.desafio.android.contacts.presentation.contactlist.adapter
 
 import android.view.LayoutInflater
 import android.view.View
