@@ -5,7 +5,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
-import com.picpay.desafio.android.contacts.data.UserResponse
+import com.picpay.desafio.android.contacts.data.remote.dto.UserResponse
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
