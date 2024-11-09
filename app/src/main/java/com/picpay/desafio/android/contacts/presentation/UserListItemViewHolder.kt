@@ -1,9 +1,11 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.contacts.presentation
 
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.picpay.desafio.android.R
+import com.picpay.desafio.android.contacts.data.User
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
