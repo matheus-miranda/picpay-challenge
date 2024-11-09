@@ -1,6 +1,6 @@
 package com.picpay.desafio.android
 
-import com.picpay.desafio.android.contacts.data.PicPayService
+import com.picpay.desafio.android.contacts.data.remote.PicPayService
 import com.picpay.desafio.android.contacts.data.remote.dto.UserResponse
 
 class ExampleService(

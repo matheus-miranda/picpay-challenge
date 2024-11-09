@@ -2,7 +2,7 @@ package com.picpay.desafio.android
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import com.picpay.desafio.android.contacts.data.PicPayService
+import com.picpay.desafio.android.contacts.data.remote.PicPayService
 import com.picpay.desafio.android.contacts.data.remote.dto.UserResponse
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert

@@ -1,6 +1,6 @@
 package com.picpay.desafio.android.contacts.data.repository
 
-import com.picpay.desafio.android.contacts.data.PicPayService
+import com.picpay.desafio.android.contacts.data.remote.PicPayService
 import com.picpay.desafio.android.contacts.data.remote.mapper.toModel
 import com.picpay.desafio.android.contacts.domain.model.User
 import com.picpay.desafio.android.contacts.domain.repository.UserRepository
