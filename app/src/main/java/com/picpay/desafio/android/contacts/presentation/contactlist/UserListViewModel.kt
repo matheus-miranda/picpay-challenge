@@ -15,8 +15,9 @@ class UserListViewModel(
 
     val userListUiState: StateFlow<ListUiState> = flow {
         try {
-            val userList = repository.getUsers()
-            emit(ListUiState.Success(userList))
+            repository.getUsers().collect {
+                emit(ListUiState.Success(it))
+            }
         } catch (e: Exception) {
             emit(ListUiState.Error(e.toString()))
         }
