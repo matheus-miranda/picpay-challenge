@@ -1,36 +1,31 @@
 package com.picpay.desafio.android.contacts.presentation.contactlist
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
-import com.picpay.desafio.android.R
+import androidx.recyclerview.widget.ListAdapter
 import com.picpay.desafio.android.contacts.domain.model.User
 
-class UserListAdapter : RecyclerView.Adapter<UserListItemViewHolder>() {
-
-    var users = emptyList<User>()
-        set(value) {
-            val result = DiffUtil.calculateDiff(
-                UserListDiffCallback(
-                    field,
-                    value
-                )
-            )
-            result.dispatchUpdatesTo(this)
-            field = value
-        }
+class UserListAdapter : ListAdapter<User, UserListItemViewHolder>(diffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListItemViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item_user, parent, false)
-
-        return UserListItemViewHolder(view)
+        return UserListItemViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: UserListItemViewHolder, position: Int) {
-        holder.bind(users[position])
+        getItem(position)?.let {
+            holder.bind(it)
+        }
     }
 
-    override fun getItemCount(): Int = users.size
+    companion object {
+        private val diffCallBack = object : DiffUtil.ItemCallback<User>() {
+            override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

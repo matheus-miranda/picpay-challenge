@@ -1,33 +1,45 @@
 package com.picpay.desafio.android.contacts.presentation.contactlist
 
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.contacts.domain.model.User
+import com.picpay.desafio.android.databinding.ListItemUserBinding
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
 class UserListItemViewHolder(
-    itemView: View
-) : RecyclerView.ViewHolder(itemView) {
+    private val binding: ListItemUserBinding,
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(user: User) {
-        itemView.findViewById<TextView>(R.id.name).text = user.name
-        itemView.findViewById<TextView>(R.id.username).text = user.username
-        itemView.findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
+        binding.run {
+            name.text = user.name
+            username.text = user.username
+            progressBar.visibility = View.VISIBLE
+        }
+
         Picasso.get()
             .load(user.img)
             .error(R.drawable.ic_round_account_circle)
-            .into(itemView.findViewById(R.id.picture), object : Callback {
+            .into(binding.picture, object : Callback {
                 override fun onSuccess() {
-                    itemView.findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
+                    binding.progressBar.visibility = View.GONE
                 }
 
                 override fun onError(e: Exception?) {
-                    itemView.findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
+                    binding.progressBar.visibility = View.GONE
                 }
             })
+    }
+
+    companion object {
+        fun create(parent: ViewGroup): UserListItemViewHolder {
+            val inflater = LayoutInflater.from(parent.context)
+            val itemBinding = ListItemUserBinding.inflate(inflater, parent, false)
+            return UserListItemViewHolder(itemBinding)
+        }
     }
 }
