@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.picpay.desafio.android.contacts.presentation.contactlist.ListUiState
 import com.picpay.desafio.android.contacts.presentation.contactlist.UserListAdapter
 import com.picpay.desafio.android.contacts.presentation.contactlist.UserListViewModel
+import com.picpay.desafio.android.core.network.isOnline
 import com.picpay.desafio.android.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,12 +28,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupRecyclerView()
+        observeState()
+    }
+
+    private fun setupRecyclerView() {
         listAdapter = UserListAdapter()
         binding.recyclerView.apply {
             adapter = listAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
+    }
 
+    private fun observeState() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.userListUiState.collect { state ->
@@ -49,8 +57,13 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         is ListUiState.Success -> {
+                            val message = getString(R.string.error_internet)
                             binding.userListProgressBar.visibility = View.GONE
                             listAdapter.submitList(state.data)
+                            if (isOnline(this@MainActivity).not()) {
+                                Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT)
+                                    .show()
+                            }
                         }
                     }
                 }
