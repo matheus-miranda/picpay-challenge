@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 
-class UserListViewModel(
+class ContactListViewModel(
     private val repository: UserRepository
 ) : ViewModel() {
 

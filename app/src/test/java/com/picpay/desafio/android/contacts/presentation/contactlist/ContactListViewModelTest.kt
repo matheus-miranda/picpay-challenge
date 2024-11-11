@@ -14,14 +14,14 @@ import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class UserListViewModelTest {
+class ContactListViewModelTest {
 
-    private lateinit var viewModel: UserListViewModel
+    private lateinit var viewModel: ContactListViewModel
     private val repository = mock<UserRepository>()
 
     @Before
     fun setUp() {
-        viewModel = UserListViewModel(repository)
+        viewModel = ContactListViewModel(repository)
     }
 
     @Test

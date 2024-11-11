@@ -1,4 +1,4 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.contacts
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -8,10 +8,11 @@ import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry
+import com.picpay.desafio.android.R
 
-class MainActivityRobot {
+class ContactsActivityRobot {
 
-    operator fun invoke(block: MainActivityRobot.() -> Unit) = block(this)
+    operator fun invoke(block: ContactsActivityRobot.() -> Unit) = block(this)
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 

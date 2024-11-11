@@ -1,4 +1,4 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.contacts
 
 import androidx.test.core.app.launchActivity
 import com.picpay.desafio.android.di.testModule
@@ -9,16 +9,16 @@ import org.junit.Test
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 
-class MainActivityTest {
+class ContactsActivityTest {
 
     private lateinit var server: MockWebServer
-    private val robot by lazy { MainActivityRobot() }
+    private val robot by lazy { ContactsActivityRobot() }
 
     @Before
     fun setUp() {
         server = MockWebServer().apply { start(port = 8080) }
         loadKoinModules(testModule)
-        launchActivity<MainActivity>()
+        launchActivity<ContactsActivity>()
     }
 
     @After
