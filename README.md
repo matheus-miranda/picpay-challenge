@@ -20,3 +20,29 @@ Com o passar do tempo identificamos alguns problemas que impedem esse aplicativo
 Boa sorte! =)
 
 Ps.: Fique à vontade para editar o projeto inteiro, organização de pastas e módulos, bem como as dependências utilizadas
+
+<hr />
+
+### Resumo das alterações realizadas:
+
+1 - Execução do projeto
+ - Atualização de libs, referencias quebradas, namespace, gradle, SDK, java e versão do Kotlin, remoção de libs e plugins depreciados/não usados.
+
+2 - Estruturacao do projeto em camadas
+- Seguindo uma proposta de arquitetura clean, temos a divisão por feature, com domain, data e presentation, além dos módulos core para parte de network e banco de dados, visando facilitar a escalabilidade do projeto, desacoplamento através da inversão de dependencias, e implementação de testes.
+
+3 - Melhorias de performance do XML
+- Achatamento de hierarquia de views, utilização de ListAdapter para redução de código. Remoção de tags duplicadas (ex: left e start)
+
+4 - Algumas tecnologias escholhidas
+- Koin para injeção de dependencias.
+- Coroutines/flow para uma abordagem moderna de reatividade.
+- ViewBinding no lugar de synthetics.
+- Room para banco de dados local.
+
+5 - Solução dos problemas propostos
+- ViewModel para manter o estado da tela durante a mudança de configuração.
+- Gerenciamento correto de lifecycle.
+- Dados cacheados no banco interno e servindo como unica fonte de verdade. Um novo request é feito na API caso o usuário esteja online.
+- Organização do código com camadas bem definidas para facilitar alterações futuras.
+- Testes unitários e instrumentados seguindo o Robot pattern.
