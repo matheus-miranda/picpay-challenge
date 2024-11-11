@@ -40,7 +40,10 @@ Ps.: Fique à vontade para editar o projeto inteiro, organização de pastas e m
 - ViewBinding no lugar de synthetics.
 - Room para banco de dados local.
 
-5 - Solução dos problemas propostos
+5 - Navegação
+- Cada feature terá uma activity como ponto de entrada. Em caso de modularização, a navegação poderá ocorrer através de deeplinks de feature para feature.
+
+6 - Solução dos problemas propostos
 - ViewModel para manter o estado da tela durante a mudança de configuração.
 - Gerenciamento correto de lifecycle.
 - Dados cacheados no banco interno e servindo como unica fonte de verdade. Um novo request é feito na API caso o usuário esteja online.
