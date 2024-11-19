@@ -45,7 +45,7 @@ Ps.: Fique à vontade para editar o projeto inteiro, organização de pastas e m
 
 6 - Solução dos problemas propostos
 - ViewModel para manter o estado da tela durante a mudança de configuração.
-- Gerenciamento correto de lifecycle.
+- Gerenciamento correto de lifecycle. Correção da exibição dos dados em modo release.
 - Dados cacheados no banco interno e servindo como unica fonte de verdade. Um novo request é feito na API caso o usuário esteja online.
 - Organização do código com camadas bem definidas para facilitar alterações futuras.
 - Testes unitários e instrumentados seguindo o Robot pattern.
