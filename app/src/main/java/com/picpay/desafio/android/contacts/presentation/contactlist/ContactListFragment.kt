@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.contacts.presentation.contactlist.adapter.UserListAdapter
-import com.picpay.desafio.android.core.network.isOnline
+import com.picpay.desafio.android.core.network.ConnectivityManager
 import com.picpay.desafio.android.databinding.FragmentContactListBinding
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContactListFragment : Fragment() {
@@ -24,13 +25,13 @@ class ContactListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var listAdapter: UserListAdapter
-
+    private val connectivityManager: ConnectivityManager by inject()
     private val viewModel: ContactListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentContactListBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -77,7 +78,7 @@ class ContactListFragment : Fragment() {
                             val message = getString(R.string.error_internet)
                             binding.userListProgressBar.visibility = View.GONE
                             listAdapter.submitList(state.data)
-                            if (isOnline(requireContext()).not()) {
+                            if (connectivityManager.isOnline().not()) {
                                 Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
                                     .show()
                             }
