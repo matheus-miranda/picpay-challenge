@@ -9,10 +9,12 @@ import com.picpay.desafio.android.contacts.domain.model.User
 import com.picpay.desafio.android.contacts.domain.repository.UserRepository
 import com.picpay.desafio.android.core.database.contacts.dao.UserDao
 import com.picpay.desafio.android.core.network.ConnectivityManager
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 
 class UserRepositoryImpl(
     private val api: PicPayService,
@@ -23,8 +25,10 @@ class UserRepositoryImpl(
     override fun getUsers(): Flow<List<User>> = flow {
         if (connectivityManager.isOnline()) {
             try {
-                val apiUsers = api.getUsers().map { it.toModel() }
-                dao.save(apiUsers.map { it.toEntity() })
+                withContext(Dispatchers.IO) {
+                    val apiUsers = api.getUsers().map { it.toModel() }
+                    dao.save(apiUsers.map { it.toEntity() })
+                }
             } catch (e: Exception) {
                 Log.e("UserRepoImpl", "Failed: ${e.message}")
             } finally {
